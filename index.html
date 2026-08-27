@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supriyo Ain</title>
+<meta name="description" content="Personal page of Supriyo Ain, M.Tech student at IIIT Hyderabad.">
+<script>
+  (function(){
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+      <span class="icon" id="themeIcon">🌙</span><span class="label" id="themeLabel">Dark</span>
+    </button>
+    <div class="wrap">
+      <p class="eyebrow">personal page</p>
+      <h1>Supriyo Ain</h1>
+      <p class="role">First-year <strong>M.Tech</strong> student at <strong>IIIT Hyderabad</strong></p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>About<span class="rule"></span></h2>
+      <p>Hi, I'm Supriyo — a first-year M.Tech student at the International Institute of Information Technology, Hyderabad. When I'm not in class, I'm usually on the badminton court or a few tabs deep into a Kaggle competition.</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <h2>Education<span class="rule"></span></h2>
+      <div class="edu">
+        <span class="dot"></span>
+        <div>
+          <h3>International Institute of Information Technology, Hyderabad</h3>
+          <p class="meta">M.Tech · 1st Year</p>
+          <span class="badge">in progress</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interests">
+    <div class="wrap">
+      <h2>Interests<span class="rule"></span></h2>
+      <div class="interests">
+        <div class="interest-card">
+          <h3>🏸 Badminton</h3>
+          <p>Rarely miss a chance to get on court — it's my go-to way to reset between deadlines.</p>
+        </div>
+        <div class="interest-card">
+          <h3>📊 Kaggle</h3>
+          <p>I like poking around datasets and building notebooks for fun, competitions included.</p>
+          <div class="cell">
+            <div class="cell-head"><span>notebook.ipynb</span><span>In [1]</span></div>
+            <div class="cell-body"><span class="c"># just here for the data</span>
+<span class="k">import</span> pandas <span class="k">as</span> pd
+df = pd.read_csv(<span class="s">"another_dataset.csv"</span>)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>Supriyo Ain — built with plain HTML &amp; CSS.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
