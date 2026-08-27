@@ -1,0 +1,197 @@
+/* =========================================================
+   CS6.302 SSD — visual overhaul (CSS only, no HTML changes)
+   Hooks entirely into existing tags/ids/classes:
+     - body > table            → outer page wrapper
+     - b[id]                   → section headers ("About:", "Staff:", etc.)
+     - table[border="1"]       → every real data table (grading, schedule, lab, exams)
+     - th, td (with tg-* classes or plain)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root{
+  --bg: #f6f4ee;
+  --surface: #ffffff;
+  --ink: #21242b;
+  --muted: #6f6a5e;
+  --accent: #1f4e5f;
+  --accent-soft: #e7eef0;
+  --gold: #b8860b;
+  --line: #e2ddd0;
+  --radius: 10px;
+}
+
+/* ---------- Base ---------- */
+html, body{
+  background: var(--bg) !important;
+}
+body{
+  color: var(--ink);
+}
+a{
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+a:hover{
+  color: var(--gold);
+  border-bottom-color: currentColor;
+}
+hr{
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--line) 15%, var(--line) 85%, transparent);
+  margin: 1.2rem 0;
+}
+
+/* ---------- Outer page shell ---------- */
+body > table{
+  width: 90% !important;
+  max-width: 880px;
+  margin: 2.5rem auto !important;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 20px 40px -24px rgba(31,78,95,.35);
+  padding: .5rem 1.75rem;
+}
+
+/* Hero title row */
+h1#home{
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: .3rem;
+}
+h1#home ~ h3{
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  color: var(--muted);
+  margin: .15rem 0;
+}
+
+/* In-page nav row (About | Lecture/Lab | ... links) */
+body > table > tbody > tr:nth-child(2) a,
+body > table > tr:nth-child(2) a{
+  display: inline-block;
+  padding: .3rem .75rem;
+  margin: .2rem .1rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .8rem;
+  font-weight: 600;
+  border-bottom: none;
+}
+body > table > tbody > tr:nth-child(2) a:hover,
+body > table > tr:nth-child(2) a:hover{
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------- Section headers ---------- */
+b[id]{
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  color: var(--accent);
+  display: inline-block;
+  position: relative;
+  padding-bottom: .2rem;
+  margin-bottom: .3rem;
+}
+b[id]::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 2.4rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--gold);
+}
+
+/* small "[go to top]" links */
+a[href="#home"]{
+  font-size: .78rem;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--muted);
+  background: var(--accent-soft);
+  padding: .15rem .5rem;
+  border-radius: 999px;
+}
+a[href="#home"]:hover{ color: #fff; background: var(--accent); }
+
+/* ---------- Body copy ---------- */
+p{ line-height: 1.7; }
+ul{ padding-left: 1.3rem; }
+li{ margin-bottom: .5rem; }
+
+/* ---------- Data tables (grading table + schedule/lab/exam tables) ---------- */
+table[border="1"]{
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: .6rem 0 1.2rem;
+}
+table[border="1"] th{
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: .85rem;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  padding: .6rem .7rem;
+  border: none;
+}
+table[border="1"] td{
+  padding: .55rem .7rem;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  font-size: .95rem;
+}
+table[border="1"] tbody tr:nth-child(even) td{
+  background: rgba(31,78,95,.045);
+}
+table[border="1"] tr:hover td{
+  background: rgba(184,134,11,.09);
+}
+table[border="1"] a{
+  font-size: .9rem;
+}
+
+/* ---------- Footer ---------- */
+body > table:last-of-type{
+  box-shadow: none;
+  background: transparent;
+}
+font[face="Quicksand"]{
+  color: var(--muted);
+}
+#txt{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px){
+  body > table{
+    width: 96% !important;
+    padding: .25rem .9rem;
+  }
+  body{ font-size: 16px !important; }
+  table[border="1"]{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  table[border="1"] th,
+  table[border="1"] td{
+    font-size: .82rem;
+    padding: .45rem .55rem;
+  }
+}
